@@ -137,8 +137,12 @@
     <junit.version>4.12</junit.version>
     <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
     <hbase.checkstyle.version>2.5.0</hbase.checkstyle.version>
-    <enforcer.version>3.0.0-M2</enforcer.version>
-    <extra.enforcer.version>1.0-beta-9</extra.enforcer.version>
+    <!-- HubSpot Edit: match version to basepom -->
+    <enforcer.version>3.5.0</enforcer.version>
+    <!-- HubSpot Edit: match version to basepom -->
+    <extra.enforcer.version>1.9.0</extra.enforcer.version>
+    <!-- HubSpot Edit: match version to basepom -->
+    <maven.shade.version>3.6.0</maven.shade.version>
     <findbugs-annotations.version>1.3.9-1</findbugs-annotations.version>
     <!--code coverage properties-->
     <clover-maven-plugin.version>4.4.1</clover-maven-plugin.version>
