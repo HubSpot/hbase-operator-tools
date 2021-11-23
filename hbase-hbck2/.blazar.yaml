@@ -1,0 +1,8 @@
+env:
+  MAVEN_ARGS: -Dgpg.skip=true
+  RPMS_OUTPUT_DIR: "$WORKSPACE/generated_rpms"
+  RPM_BUILD_COMMAND: "./bin/build.sh"
+
+stepActivation:
+  uploadRpms:
+    branchRegexes: [".*"]
