@@ -1,0 +1,2 @@
+env:
+  MAVEN_ARGS: -Dgpg.skip=true
