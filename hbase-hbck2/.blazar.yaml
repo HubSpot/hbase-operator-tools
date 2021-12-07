@@ -1,0 +1,22 @@
+env:
+  MAVEN_ARGS: -Dgpg.skip=true
+  RPMS_OUTPUT_DIR: "$WORKSPACE/generated_rpms"
+
+after:
+  onSuccess:
+    - description: "Ensure $RPMS_OUTPUT_DIR exists"
+      commands:
+        - mkdir -p $RPMS_OUTPUT_DIR
+
+    - description: "Create RPM Package"
+      commands:
+        - ./bin/build.sh
+
+    - description: "List RPMs in $RPMS_OUTPUT_DIR"
+      commands:
+        - echo "The following Rpms are ready for upload"
+        - ls -lah $RPMS_OUTPUT_DIR
+
+    - description: "Publish RPM"
+      commands:
+        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name 6_HubSpot
