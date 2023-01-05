@@ -44,6 +44,7 @@ fpm \
   --name $NAME \
   --version ${VERSION} \
   --iteration "${ITERATION}" \
+  --architecture all \
   -s "dir" \
   -t "rpm" \
   --package $RPMS_OUTPUT_DIR \
