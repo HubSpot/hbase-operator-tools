@@ -18,6 +18,7 @@ after:
         - ls -lah $RPMS_OUTPUT_DIR
 
     - description: "Publish RPM"
+      container: host
       commands:
         - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name 8_HubSpot
         - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name aarch64_8_HubSpot
