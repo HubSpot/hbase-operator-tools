@@ -20,5 +20,5 @@ after:
     - description: "Publish RPM"
       container: host
       commands:
-        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name 8_HubSpot
-        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name aarch64_8_HubSpot
+        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name AnyLinuxVersion_HubSpot_x86_64
+        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name AnyLinuxVersion_HubSpot_aarch64
