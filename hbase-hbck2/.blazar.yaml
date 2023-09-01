@@ -1,24 +1,12 @@
+buildpack:
+  name: Blazar-Buildpack-Java
+  branch: java-rpm-dev
+
 env:
   MAVEN_ARGS: -Dgpg.skip=true
   RPMS_OUTPUT_DIR: "$WORKSPACE/generated_rpms"
+  RPM_BUILD_COMMAND: "./bin/build.sh"
 
-after:
-  onSuccess:
-    - description: "Ensure $RPMS_OUTPUT_DIR exists"
-      commands:
-        - mkdir -p $RPMS_OUTPUT_DIR
-
-    - description: "Create RPM Package"
-      commands:
-        - ./bin/build.sh
-
-    - description: "List RPMs in $RPMS_OUTPUT_DIR"
-      commands:
-        - echo "The following Rpms are ready for upload"
-        - ls -lah $RPMS_OUTPUT_DIR
-
-    - description: "Publish RPM"
-      container: host
-      commands:
-        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name AnyLinuxVersion_HubSpot_x86_64
-        - rpm-upload --rpms-dir=$WORKSPACE/generated_rpms/ --repo-name AnyLinuxVersion_HubSpot_aarch64
+stepActivation:
+  uploadRpms:
+    branchRegexes: [".*"]
