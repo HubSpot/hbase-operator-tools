@@ -1,7 +1,3 @@
-buildpack:
-  name: Blazar-Buildpack-Java
-  branch: java-rpm-dev
-
 env:
   MAVEN_ARGS: -Dgpg.skip=true
   RPMS_OUTPUT_DIR: "$WORKSPACE/generated_rpms"
