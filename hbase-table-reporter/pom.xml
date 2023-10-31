@@ -33,6 +33,7 @@
   <description>HBase Table Report</description>
   <properties>
     <maven.compiler.version>3.6.1</maven.compiler.version>
+    <shaded.pom.path>${project.build.directory}/${project.artifactId}-${project.version}.pom</shaded.pom.path>
   </properties>
   <build>
     <plugins>
@@ -62,8 +63,7 @@
             <configuration>
               <minimizeJar>true</minimizeJar>
               <createDependencyReducedPom>true</createDependencyReducedPom>
-              <dependencyReducedPomLocation>${java.io.tmpdir}/dependency-reduced-pom.xml
-                </dependencyReducedPomLocation>
+              <dependencyReducedPomLocation>${shaded.pom.path}</dependencyReducedPomLocation>
               <artifactSet>
                 <excludes>
                   <exclude>org.apache.hbase:hbase-shaded-client</exclude>
