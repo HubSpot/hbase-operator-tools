@@ -86,7 +86,20 @@ public class TestHBCKCommandLineParsing {
     }
   }
 
-  @Test(expected = NumberFormatException.class)
+  @Test
+  public void testInvalidCommandPrintsError() throws IOException {
+    String output = retrieveOptionOutput(new String[]{"invalidArg", "-h"});
+    assertTrue(output.contains("ERROR:"));
+  }
+
+  @Test
+  public void testPrintsCorrectUsage() throws IOException {
+    String output = retrieveOptionOutput(new String[]{"addFsRegionsMissingInMeta", "-h"});
+    assertFalse(output.contains("ERROR:"));
+    assertTrue(output.contains("Options:"));
+  }
+
+  @Test (expected=NumberFormatException.class)
   public void testCommandWithOptions() throws IOException {
     // The 'x' below should cause the NumberFormatException. The Options should all be good.
     this.hbck2.run(new String[] { "bypass", "--lockWait=3", "--override", "--recursive", "x" });
