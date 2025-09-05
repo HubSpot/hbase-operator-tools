@@ -246,6 +246,8 @@
               -->
               <exclude>${test.exclude.pattern}</exclude>
             </excludes>
+            <!-- HubSpot Edit: for some reason the build-with-jdk17 profile doesn't activate on Blazar? -->
+            <argLine>${hbase-surefire.jdk11.flags}</argLine>
           </configuration>
           <dependencies>
             <!-- by default surefire selects dynamically the connector to the unit tests
